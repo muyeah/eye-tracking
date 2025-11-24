@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>眼球移動追蹤展示</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/webgazer/dist/webgazer.min.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__text">
+      <h1>眼球移動追蹤示範</h1>
+      <p>
+        允許鏡頭權限後，系統會即時推測你正在查看的區域，並在畫面上留下時間標記。
+      </p>
+      <div class="controls">
+        <button id="startBtn" class="btn primary">開始追蹤</button>
+        <button id="stopBtn" class="btn" disabled>停止</button>
+        <span id="status" class="status">等待開始…</span>
+      </div>
+      <ul class="tips">
+        <li>請在光線充足的環境中使用，並保持臉部在鏡頭可見範圍。</li>
+        <li>將瀏覽器視窗最大化，觀察游標與標記對應的位置。</li>
+        <li>若出現延遲或飄移，可重新整理頁面重新校準。</li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="board" aria-label="追蹤區域">
+      <div id="overlay" class="overlay" tabindex="0">
+        <div id="gazePointer" class="gaze-pointer" aria-hidden="true"></div>
+        <div id="markers" class="markers" aria-live="polite"></div>
+      </div>
+    </section>
+    <aside class="log" aria-label="目光紀錄">
+      <header class="log__header">
+        <h2>最新紀錄</h2>
+        <p>每秒更新一次，顯示於對應位置並列於此處。</p>
+      </header>
+      <ol id="logList" class="log__list"></ol>
+    </aside>
+  </main>
+
+  <section class="privacy">
+    <h2>隱私說明</h2>
+    <p>
+      本頁面只在瀏覽器端處理影像資料，不會上傳至伺服器。重新整理或關閉頁面即可停止所有追蹤。
+    </p>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
