@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eye Movement Tracker</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Interactive Demo</p>
+      <h1>Track your eye movement directly in the browser.</h1>
+      <p>
+        This demo uses <a href="https://webgazer.cs.brown.edu/" target="_blank" rel="noreferrer">WebGazer.js</a>
+        to estimate where you are looking. Press <strong>Start tracking</strong> and watch the live indicator and
+        activity log react as your gaze moves across the page.
+      </p>
+      <div class="actions">
+        <button id="startButton" class="button primary">Start tracking</button>
+        <button id="stopButton" class="button" disabled>Stop</button>
+      </div>
+      <p class="note">Your webcam never leaves the page and nothing is stored remotely.</p>
+    </div>
+    <div class="hero__visual">
+      <div class="gaze-dot" id="gazeDot" aria-hidden="true"></div>
+      <div class="target" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-grid">
+      <article class="card" data-spot="overview">
+        <h2>Overview</h2>
+        <p>
+          The tracker estimates your gaze position from the webcam feed, then maps that point onto this page. As you
+          look around, the glowing indicator follows and the log records which content region you linger on.
+        </p>
+      </article>
+      <article class="card" data-spot="workflow">
+        <h2>Workflow</h2>
+        <ol>
+          <li>Allow camera access when prompted.</li>
+          <li>Glance at each part of the page so the model can adapt to you.</li>
+          <li>Watch the log update as you focus on different sections.</li>
+        </ol>
+      </article>
+      <article class="card" data-spot="tips">
+        <h2>Tips for steadier results</h2>
+        <ul>
+          <li>Keep your head still and centered in the frame.</li>
+          <li>Make sure your face is evenly lit.</li>
+          <li>Use a laptop or external webcam at eye level.</li>
+        </ul>
+      </article>
+      <article class="card" data-spot="privacy">
+        <h2>Privacy</h2>
+        <p>
+          All processing happens in your browser. Webcam frames and gaze coordinates stay local; refreshing the page
+          clears the calibration and activity log.
+        </p>
+      </article>
+      <article class="card wide" data-spot="demo">
+        <h2>Live activity log</h2>
+        <p>Recent gaze locations will appear here. Move your eyes between sections to see how the tracker responds.</p>
+        <div id="log" class="log" aria-live="polite">
+          <p class="placeholder">Press <strong>Start tracking</strong> to begin.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webgazer/2.1.0/webgazer.min.js" integrity="sha512-UFyblqZ6rQOzJ6LNPYVJ68bMbjd7hZVBt3gChbgcogfYuFoWCSz84WfPe+xOOei+8dXq4UddG97C2zOqouIf5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+</html>
